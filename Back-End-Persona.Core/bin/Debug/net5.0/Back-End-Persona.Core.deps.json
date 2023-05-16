@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Back-End-Persona.Core/1.0.0": {
+        "runtime": {
+          "Back-End-Persona.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Back-End-Persona.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

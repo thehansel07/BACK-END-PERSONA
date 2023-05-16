@@ -1,0 +1,12 @@
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\bin\Debug\net5.0\Back-End-Persona.Core.deps.json
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\bin\Debug\net5.0\Back-End-Persona.Core.dll
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\bin\Debug\net5.0\ref\Back-End-Persona.Core.dll
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\bin\Debug\net5.0\Back-End-Persona.Core.pdb
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\obj\Debug\net5.0\Back-End-Persona.Core.csproj.AssemblyReference.cache
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\obj\Debug\net5.0\Back-End-Persona.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\obj\Debug\net5.0\Back-End-Persona.Core.AssemblyInfoInputs.cache
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\obj\Debug\net5.0\Back-End-Persona.Core.AssemblyInfo.cs
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\obj\Debug\net5.0\Back-End-Persona.Core.csproj.CoreCompileInputs.cache
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\obj\Debug\net5.0\Back-End-Persona.Core.dll
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\obj\Debug\net5.0\ref\Back-End-Persona.Core.dll
+C:\Users\hcabrera\OneDrive - SEGURNET CORREDORES DE SEGUROS SRL\Desktop\Prueba Tecnica\Documentacion backEd\Back-End-Persona\Back-End-Persona.Core\obj\Debug\net5.0\Back-End-Persona.Core.pdb
