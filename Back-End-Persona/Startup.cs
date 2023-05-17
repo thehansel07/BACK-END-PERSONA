@@ -11,6 +11,7 @@ namespace Back_End_Persona
 {
     public class Startup
     {
+        private readonly string _MyCors = "MyCors";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,6 +31,19 @@ namespace Back_End_Persona
 
             services.AddDbContexts(Configuration);
             services.AddServices();
+
+            services.AddCors(options =>
+            {
+
+                options.AddPolicy(name: _MyCors, builder =>
+                {
+                    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost").AllowAnyHeader().AllowAnyMethod();
+                });
+
+
+            });
+
+  
 
             services.AddSwagger();
 
