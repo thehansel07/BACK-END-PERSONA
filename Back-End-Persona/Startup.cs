@@ -29,8 +29,8 @@ namespace Back_End_Persona
             });
 
             services.AddDbContexts(Configuration);
+            services.AddServices();
 
-            services.AddControllers();
             services.AddSwagger();
 
             services.AddMvc().AddFluentValidation(options =>

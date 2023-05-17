@@ -20,7 +20,7 @@ namespace Back_End_Persona.Infrastructure.Data.ModelCreatingConfigurations
                 .HasMaxLength(255)
                 .IsUnicode(false);
 
-            builder.Property(e => e.FechaDeNacimiento)
+            builder.Property(e => e.FechaNacimiento)
                 .IsRequired()
                 .IsUnicode(false);
         }

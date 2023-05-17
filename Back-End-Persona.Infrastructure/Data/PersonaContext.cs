@@ -1,11 +1,7 @@
-﻿using Back_End_Persona.Core.Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using Back_End_Persona.Core.Entities;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Back_End_Persona.Infrastructure.Data
 {

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Back_End_Persona.Core.Entities
 {
-    public class Persona
+    public interface IUnitOfWork : IDisposable
     {
-        public int IdPersona { get; set; }
-        public string Nombre { get; set; }
-        public DateTime FechaNacimiento { get; set; }
-
+        public IPersonaRepository PersonaRepository { get; }
+        Task SaveChangesAsync();
 
     }
 }

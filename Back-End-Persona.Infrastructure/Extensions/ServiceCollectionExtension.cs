@@ -1,14 +1,9 @@
-﻿using Back_End_Persona.Core.Entities;
-using Back_End_Persona.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Back_End_Persona.Core.Entities;
+using Back_End_Persona.Infrastructure.Data;
 
 
 
@@ -29,7 +24,7 @@ namespace Back_End_Persona.Infrastructure.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IPersonaRepository, PersonaRepository>();
             return services;
         }
 
@@ -37,7 +32,7 @@ namespace Back_End_Persona.Infrastructure.Extensions
         {
             services.AddSwaggerGen(doc =>
             {
-                doc.SwaggerDoc("v1", new OpenApiInfo { Title = "Modelo Entrevistas API", Version = "v1" });
+                doc.SwaggerDoc("v1", new OpenApiInfo { Title = "Modelo de API Persona", Version = "v1" });
             });
 
             return services;
