@@ -1,6 +1,7 @@
 ﻿using Back_End_Persona.Core.Entities;
 using Back_End_Persona.Core.ViewModel;
 using Back_End_Persona.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +15,8 @@ namespace Back_End_Persona.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonaController : ControllerBase
+    [AllowAnonymous]
+    public class PersonaController : Controller
     {
         private readonly IPersonaRepository _personaRepository;
         private readonly PersonaContext _context;
@@ -27,14 +29,14 @@ namespace Back_End_Persona.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("[action]")]
         public IActionResult GetPersonas()
         {
             var personasList = _personaRepository.GetAllPersonas();
             return Ok(personasList);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("[action]/{id}")]
         public IActionResult GetPersonasById(int id)
         {
             var persona = _personaRepository.GetPersonasById(id);
@@ -42,7 +44,7 @@ namespace Back_End_Persona.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("[action]/{id}")]
         public IActionResult UpdatePersona(string id, PersonaViewModel persona)
         {
             //Validar que exista usuario en la base de datos, posterior a eso actulizar el registro.
@@ -60,14 +62,14 @@ namespace Back_End_Persona.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost(nameof(InsertPersonas))]
         public IActionResult InsertPersonas(PersonaViewModel viewModel)
         {
             _personaRepository.AddOrUpdatePersona(viewModel, "");
             return Ok("Persona Insertado Correctamente");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("[action]/{id}")]
         public IActionResult DeletePersonas(int id)
         {
             _personaRepository.DeletePersona(id);
