@@ -1,4 +1,5 @@
 ﻿using Back_End_Persona.Core.Entities;
+using Back_End_Persona.Core.ViewModel;
 using Back_End_Persona.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -42,10 +43,10 @@ namespace Back_End_Persona.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult UpdatePersona(int id, Persona persona)
+        public IActionResult UpdatePersona(string id, PersonaViewModel persona)
         {
             //Validar que exista usuario en la base de datos, posterior a eso actulizar el registro.
-            var obj = _context.Persona.Where(x => x.IdPersona == id).FirstOrDefault();
+            var obj = _context.Persona.Where(x => x.IdPersona == int.Parse(id)).FirstOrDefault();
 
             if (obj != null)
             {
@@ -60,9 +61,9 @@ namespace Back_End_Persona.Controllers
 
 
         [HttpPost]
-        public IActionResult InsertPersonas(Persona persona)
+        public IActionResult InsertPersonas(PersonaViewModel viewModel)
         {
-            _personaRepository.AddOrUpdatePersona(persona, null);
+            _personaRepository.AddOrUpdatePersona(viewModel, "");
             return Ok("Persona Insertado Correctamente");
         }
 

@@ -1,4 +1,5 @@
 ﻿using Back_End_Persona.Core.Entities;
+using Back_End_Persona.Core.ViewModel;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -19,7 +20,7 @@ namespace Back_End_Persona.Infrastructure.Data
 
         }
 
-        public void AddOrUpdatePersona(Persona persona, int? id)
+        public void AddOrUpdatePersona(PersonaViewModel viewModel, string id)
         {
             try
             {
@@ -30,8 +31,8 @@ namespace Back_End_Persona.Infrastructure.Data
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@IdPersona", SqlDbType.VarChar).Value = id;
-                        cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = persona.Nombre;
-                        cmd.Parameters.Add("@FechaNacimiento", SqlDbType.VarChar).Value = persona.FechaNacimiento;
+                        cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = viewModel.Nombre;
+                        cmd.Parameters.Add("@FechaNacimiento", SqlDbType.VarChar).Value = viewModel.FechaNacimiento;
                         cmd.Parameters.Add("@ActionType", SqlDbType.VarChar).Value = 1;
 
                         conn.Open();
