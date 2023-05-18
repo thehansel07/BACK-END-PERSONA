@@ -19,7 +19,7 @@ namespace Back_End_Persona.Infrastructure.Data
 
         }
 
-        public void AddOrUpdatePersona(Persona persona)
+        public void AddOrUpdatePersona(Persona persona, int? id)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace Back_End_Persona.Infrastructure.Data
                     using (SqlCommand cmd = new SqlCommand("Sp_Generico", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@IdPersona", SqlDbType.VarChar).Value =persona.IdPersona;
+                        cmd.Parameters.Add("@IdPersona", SqlDbType.VarChar).Value = id;
                         cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = persona.Nombre;
                         cmd.Parameters.Add("@FechaNacimiento", SqlDbType.VarChar).Value = persona.FechaNacimiento;
                         cmd.Parameters.Add("@ActionType", SqlDbType.VarChar).Value = 1;
@@ -147,13 +147,50 @@ namespace Back_End_Persona.Infrastructure.Data
 
         public Persona GetPersonasById(int IdPersona)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Persona obj = new Persona();
+                using (SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("DevConnectionHansel")))
+                {
+                    using (SqlCommand cmd = new SqlCommand("Sp_Generico", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@IdPersona", SqlDbType.VarChar).Value = IdPersona;
+                        cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = "";
+                        cmd.Parameters.Add("@FechaNacimiento", SqlDbType.VarChar).Value = "";
+                        cmd.Parameters.Add("@ActionType", SqlDbType.VarChar).Value = 4;
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            obj = new Persona
+                            {
+                                IdPersona = int.Parse(reader["IdPersona"].ToString()),
+                                Nombre = reader["Nombre"].ToString(),
+                                FechaNacimiento = DateTime.Parse(reader["FechaNacimiento"].ToString())
+
+                            };
+
+                        }
+
+                    }
+
+                }
+                return obj;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ha ocurrido un error", ex);
+            }
         }
 
         //NO ES NECESARIO POR LA CREACION DEL PROC GENERICO
-        public void UpdatePersonas(Persona persona)
+        public void UpdatePersonas(Persona persona, int id)
         {
-            List<Persona> personas = new List<Persona>();
             try
             {
 
@@ -162,7 +199,7 @@ namespace Back_End_Persona.Infrastructure.Data
                     using (SqlCommand cmd = new SqlCommand("Sp_Generico", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add("@IdPersona", SqlDbType.VarChar).Value = persona.IdPersona;
+                        cmd.Parameters.Add("@IdPersona", SqlDbType.VarChar).Value = id;
                         cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = persona.Nombre;
                         cmd.Parameters.Add("@FechaNacimiento", SqlDbType.VarChar).Value = persona.Nombre;
                         cmd.Parameters.Add("@ActionType", SqlDbType.VarChar).Value = 1;

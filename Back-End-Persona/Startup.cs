@@ -32,6 +32,7 @@ namespace Back_End_Persona
             services.AddDbContexts(Configuration);
             services.AddServices();
 
+
             services.AddCors(options =>
             {
 
@@ -66,13 +67,17 @@ namespace Back_End_Persona
 
             app.UseHttpsRedirection();
 
+            app.UseCors(_MyCors);
+
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name:"Default", 
+                    pattern:"{controller=Persona}/{action=Swagger}/{id?}");
             });
         }
     }

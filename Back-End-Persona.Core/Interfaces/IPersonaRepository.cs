@@ -9,9 +9,8 @@ namespace Back_End_Persona.Core.Entities
     public interface IPersonaRepository : IBaseRepository<Persona>
     {
         List<Persona> GetAllPersonas();
-        void AddOrUpdatePersona(Persona persona);
+        void AddOrUpdatePersona(Persona persona, int? id);
         void DeletePersona(int IdPersona);
-        void UpdatePersonas(Persona IdPersona);
         Persona GetPersonasById(int IdPersona);
     }
 }

@@ -26,8 +26,6 @@ namespace Back_End_Persona.Controllers
 
         }
 
-
-
         [HttpGet]
         public IActionResult GetPersonas()
         {
@@ -35,16 +33,23 @@ namespace Back_End_Persona.Controllers
             return Ok(personasList);
         }
 
-
-        [HttpPut]
-        public IActionResult UpdatePersona(Persona persona)
+        [HttpGet("{id}")]
+        public IActionResult GetPersonasById(int id)
         {
-            //Validar que exista en la base de datos, posterior a eso actulizar el registro.
-            var obj = _context.Persona.Where(x => x.IdPersona == persona.IdPersona).FirstOrDefault();
+            var persona = _personaRepository.GetPersonasById(id);
+            return Ok(persona);
+        }
+
+
+        [HttpPut("{id}")]
+        public IActionResult UpdatePersona(int id, Persona persona)
+        {
+            //Validar que exista usuario en la base de datos, posterior a eso actulizar el registro.
+            var obj = _context.Persona.Where(x => x.IdPersona == id).FirstOrDefault();
 
             if (obj != null)
             {
-                _personaRepository.AddOrUpdatePersona(persona);
+                _personaRepository.AddOrUpdatePersona(persona, id);
                 return Ok("Persona actualizada Correctamente");
             }
             else
@@ -57,14 +62,14 @@ namespace Back_End_Persona.Controllers
         [HttpPost]
         public IActionResult InsertPersonas(Persona persona)
         {
-            _personaRepository.AddOrUpdatePersona(persona);
+            _personaRepository.AddOrUpdatePersona(persona, null);
             return Ok("Persona Insertado Correctamente");
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeletePersonas(int IdPersona)
+        public IActionResult DeletePersonas(int id)
         {
-            _personaRepository.DeletePersona(IdPersona);
+            _personaRepository.DeletePersona(id);
             return Ok("Persona Eliminado Correctamente");
         }
 
