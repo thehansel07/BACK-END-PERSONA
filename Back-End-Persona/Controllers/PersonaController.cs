@@ -48,9 +48,9 @@ namespace Back_End_Persona.Controllers
         public IActionResult UpdatePersona(string id, PersonaViewModel persona)
         {
             //Validar que exista usuario en la base de datos, posterior a eso actulizar el registro.
-            var obj = _context.Persona.Where(x => x.IdPersona == int.Parse(id)).FirstOrDefault();
+            var currentEntity = _context.Persona.Where(x => x.IdPersona == int.Parse(id)).FirstOrDefault();
 
-            if (obj != null)
+            if (currentEntity != null)
             {
                 _personaRepository.AddOrUpdatePersona(persona, id);
                 return Ok("Persona actualizada Correctamente");
@@ -72,8 +72,18 @@ namespace Back_End_Persona.Controllers
         [HttpDelete("[action]/{id}")]
         public IActionResult DeletePersonas(int id)
         {
-            _personaRepository.DeletePersona(id);
-            return Ok("Persona Eliminado Correctamente");
+            var currentEntity = _context.Persona.Where(x => x.IdPersona == id).FirstOrDefault();
+
+            if (currentEntity != null)
+            {
+                _personaRepository.DeletePersona(id);
+                return Ok("Persona Eliminado Correctamente");
+            }
+            else
+            {
+                return BadRequest("Debe sumistrar al sistema un Id Existente");
+            }
+
         }
 
 
