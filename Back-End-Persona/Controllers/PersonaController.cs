@@ -55,7 +55,7 @@ namespace Back_End_Persona.Controllers
                     FechaNacimiento = persona.FechaNacimiento
                 };
 
-                return Ok("Persona buscada correctamente");
+                return Ok();
             }
             else
             {
@@ -75,7 +75,7 @@ namespace Back_End_Persona.Controllers
             if (currentEntity != null)
             {
                 _personaRepository.AddOrUpdatePersona(persona, id);
-                return Ok("Persona actualizada Correctamente");
+                return Ok();
             }
             else
             {
@@ -100,7 +100,7 @@ namespace Back_End_Persona.Controllers
             if (currentEntity != null)
             {
                 _personaRepository.DeletePersona(id);
-                return Ok("Persona Eliminado Correctamente");
+                return Ok();
             }
             else
             {
