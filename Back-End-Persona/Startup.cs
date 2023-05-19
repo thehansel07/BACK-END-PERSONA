@@ -11,7 +11,7 @@ namespace Back_End_Persona
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        private readonly string _MyCors = "MyCors";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -35,15 +35,16 @@ namespace Back_End_Persona
 
             services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  policy =>
-                                  {
-                                      policy.WithOrigins("http://example.com",
-                                                          "http://www.contoso.com");
-                                  });
+
+                options.AddPolicy(name: _MyCors, builder =>
+                {
+                    builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost").AllowAnyHeader().AllowAnyMethod();
+                });
+
+
             });
 
-
+  
 
             services.AddSwagger();
 
@@ -66,7 +67,12 @@ namespace Back_End_Persona
 
             app.UseHttpsRedirection();
 
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors(x=> x.AllowCredentials()
+                             .AllowAnyMethod()
+                             .AllowAnyHeader());
+
+            app.UseCors(_MyCors);
+
 
             app.UseRouting();
 
